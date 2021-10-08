@@ -12,4 +12,8 @@ class Car extends Model
     public static function getAllCars(){
         return self::all();
     }
+
+    public static function getOtherCars($id){
+        return self::where('id', 'not like', $id);
+    }
 }

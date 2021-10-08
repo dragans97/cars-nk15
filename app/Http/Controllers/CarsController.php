@@ -15,6 +15,8 @@ class CarsController extends Controller
 
     public function show(Car $car)
     {
-        return view('cars.show', compact('car'));
+        $otherCars = Car::getOtherCars($car->id)->get();
+    
+        return view('cars.show', compact('car', 'otherCars'));
     }
 }
