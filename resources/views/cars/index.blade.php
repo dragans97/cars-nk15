@@ -1,18 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Cars</title>
-</head>
-<body>
-    <ul>
+@extends('layouts.app')
+
+@section('title', 'Cars')
+    
+@section('content')
+    <div class="row">
         @foreach ($cars as $car)
-            <a href="{{ route('single-car',['car' => $car->id]) }}">
-                <li><b>{{ $car->producer }}</b> | {{ $car->title }}</li>
-            </a>
+            <div class="col-lg-4 col-sm-12">
+                <div class="card" style="width:">
+                    <div class="card-body">
+                      <h5 class="card-title">Producer: {{ $car->producer }}</h5>
+                      <h5 class="card-title">Model: {{ $car->title }}</h5>
+                      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam aliquam non incidunt? Recusandae adipisci animi accusantium illum labore fugit dolorem?</p>
+                      <a href="{{ route('single-car',['car' => $car->id]) }}" class="btn btn-dark">See More</a>
+                    </div>
+                </div>
+            </div>
         @endforeach
-    </ul>
-</body>
-</html>
+    </div>
+@endsection

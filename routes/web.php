@@ -17,11 +17,9 @@ Route::get('/', function () {
     $name = "Dragan";
     $age = 24;
     return view('welcome', compact('name', 'age'));
-});
+})->name('home');
 
-Route::get('/about', function(){
-    return view('about');
-});
+Route::get('/about', function(){ return view('about'); })->name('about');
 
-Route::get('/cars', [CarsController::class, 'index']);
+Route::get('/cars', [CarsController::class, 'index'])->name('cars');
 Route::get('/cars/{car}', [CarsController::class, 'show'])->name('single-car');
