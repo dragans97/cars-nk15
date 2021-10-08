@@ -19,4 +19,18 @@ class CarsController extends Controller
     
         return view('cars.show', compact('car', 'otherCars'));
     }
+
+    public function filter(Request $request){
+        
+        $status = $request->input('status');
+        if($status  == 'all'){
+            $cars = Car::getAllCars();
+        }else { 
+            $cars = Car::filterCarsBySoldStatus($status)->get();
+        }
+        
+        return view('cars.index', compact('cars'));
+    }
+
+    
 }

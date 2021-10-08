@@ -16,4 +16,8 @@ class Car extends Model
     public static function getOtherCars($id){
         return self::where('id', 'not like', $id);
     }
+
+    public static function filterCarsBySoldStatus($status){
+        return self::where('is_sold', 'like', $status);
+    }
 }
