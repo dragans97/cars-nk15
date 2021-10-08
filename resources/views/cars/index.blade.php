@@ -10,7 +10,10 @@
                 @csrf
                 <h1>Filter cars</h1>
                 <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nulla, voluptates.</p>
-                
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Search..</label>
+                    <input type="text" class="form-control" name="searchTerm" aria-describedby="emailHelp" placeholder="Search...">
+                  </div>
                 <select class="form-select mt-3 mb-2" aria-label="Default select example" name="status">
                     <option selected disabled>-- Chose --</option>
                     <option value="all">All</option>
@@ -31,7 +34,8 @@
                             <div class="card-body">
                             <h5 class="card-title">Producer: {{ $car->producer }}</h5>
                             <h5 class="card-title">Model: {{ $car->title }}</h5>
-                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam aliquam non incidunt? Recusandae adipisci animi accusantium illum labore fugit dolorem?</p>
+                            <p>{{ Illuminate\Support\Str::limit($car->description, 30) }}</p>
+                            
                             <a href="{{ route('single-car',['car' => $car->id]) }}" class="btn btn-dark">See More</a>
                             </div>
                         </div>
